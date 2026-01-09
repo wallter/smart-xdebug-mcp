@@ -18,7 +18,7 @@ Please be respectful and constructive in all interactions. We're all here to bui
 
 ```bash
 # Clone the repository
-git clone https://github.com/tylerwall/smart-xdebug-mcp.git
+git clone https://github.com/wallter/smart-xdebug-mcp.git
 cd smart-xdebug-mcp
 
 # Install dependencies

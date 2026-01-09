@@ -1,0 +1,10 @@
+Smart XDebug MCP Server
+Copyright 2026 Tyler Wall
+
+This product includes software developed by Tyler Wall.
+
+This software bridges XDebug's DBGp protocol with the Model Context Protocol (MCP),
+enabling AI-powered PHP debugging through Claude and other MCP-compatible clients.
+
+Third-party dependencies are listed in package.json and are subject to their
+respective licenses.

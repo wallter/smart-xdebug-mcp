@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "xdebug": {
+      "command": "npx",
+      "args": ["smart-xdebug-mcp"],
+      "comment": "Or use 'node dist/index.js' for local development"
+    }
+  }
+}

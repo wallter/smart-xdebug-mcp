@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Test coverage
+coverage/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug data
+.xdebug-mcp/
+
+# Test app (vendor installed by composer)
+test-app/laravel/vendor/
+test-app/laravel/.env
+
+# MCP config (local paths)
+.mcp.json
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+
+# npm
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo

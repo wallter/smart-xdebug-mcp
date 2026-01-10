@@ -1,11 +1,25 @@
 # Smart XDebug MCP Server
 
+[![npm version](https://img.shields.io/npm/v/smart-xdebug-mcp.svg)](https://www.npmjs.com/package/smart-xdebug-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/smart-xdebug-mcp.svg)](https://www.npmjs.com/package/smart-xdebug-mcp)
+[![CI](https://github.com/wallter/smart-xdebug-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/wallter/smart-xdebug-mcp/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18%2B-green.svg)](https://nodejs.org)
 
 **Let AI debug your PHP code.**
 
 Smart XDebug MCP connects Claude to your PHP application's debugger, enabling AI-assisted debugging that actually understands your code at runtime.
+
+<!--
+TODO: Add demo GIF here
+![Demo](docs/demo.gif)
+
+To create the demo GIF:
+1. Install terminalizer: npm install -g terminalizer
+2. Record: terminalizer record demo
+3. Edit demo.yml to customize
+4. Generate: terminalizer render demo -o docs/demo.gif
+-->
 
 ## The Problem
 

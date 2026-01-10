@@ -1,16 +1,16 @@
 {
   "name": "smart-xdebug-mcp",
   "version": "0.1.0",
-  "description": "MCP server bridging XDebug's DBGp protocol with Claude for AI-powered PHP debugging",
+  "description": "Let AI debug your PHP code - MCP server connecting Claude to XDebug for runtime variable inspection, breakpoints, and step-through debugging",
   "author": "Tyler Wall",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/tylerwall/smart-xdebug-mcp",
+  "homepage": "https://github.com/wallter/smart-xdebug-mcp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tylerwall/smart-xdebug-mcp.git"
+    "url": "https://github.com/wallter/smart-xdebug-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/tylerwall/smart-xdebug-mcp/issues"
+    "url": "https://github.com/wallter/smart-xdebug-mcp/issues"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,12 +32,23 @@
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "xdebug",
     "php",
     "debugging",
+    "debugger",
     "claude",
     "ai",
-    "dbgp"
+    "ai-debugging",
+    "dbgp",
+    "laravel",
+    "breakpoints",
+    "runtime-debugging",
+    "variable-inspection",
+    "step-debugging",
+    "developer-tools",
+    "docker",
+    "anthropic"
   ],
   "engines": {
     "node": ">=18.0.0"

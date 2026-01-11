@@ -137,7 +137,11 @@ export class PathMapper {
     }
 
     if (bestMatch) {
-      const relativePath = path.slice(bestMatch.remote.length);
+      let relativePath = path.slice(bestMatch.remote.length);
+      // Remove leading slash - join() treats absolute paths specially
+      if (relativePath.startsWith('/')) {
+        relativePath = relativePath.slice(1);
+      }
       return join(bestMatch.local, relativePath);
     }
 

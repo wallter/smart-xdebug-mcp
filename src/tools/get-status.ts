@@ -3,26 +3,40 @@
  */
 
 import type { DebugSessionManager } from '../debug/session-manager.js';
+import { getConfig } from '../config.js';
 
 export async function handleGetSessionStatus(
   sessionManager: DebugSessionManager
 ): Promise<unknown> {
   const session = sessionManager.getSession();
 
+  const config = getConfig();
+  const configInfo = {
+    port: config.port,
+    projectRoot: config.projectRoot ?? process.cwd(),
+    pathMappings: config.pathMappings ?? 'auto-detect',
+  };
+
   if (!session) {
     return {
       active: false,
       message: 'No debug session active.',
       hint: "Use 'set_breakpoint' to set breakpoints, then 'start_debug_session' to begin debugging.",
+      config: configInfo,
     };
   }
 
   const breakpointCount = session.breakpoints.size;
-  const breakpointList = Array.from(session.breakpoints.values()).map((bp) => ({
-    file: bp.file,
-    line: bp.line,
-    condition: bp.condition,
-  }));
+  const breakpointList = Array.from(session.breakpoints.entries()).map(([key, bp]) => {
+    // key is "localFile:line", bp.file is remote path
+    const localFile = key.split(':')[0] ?? key;
+    return {
+      localFile,
+      remotePath: bp.file,
+      line: bp.line,
+      condition: bp.condition,
+    };
+  });
 
   return {
     active: true,
@@ -41,6 +55,7 @@ export async function handleGetSessionStatus(
       count: breakpointCount,
       list: breakpointList,
     },
+    config: configInfo,
     available_actions: getAvailableActions(session.status),
   };
 }

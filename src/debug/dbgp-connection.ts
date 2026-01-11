@@ -458,16 +458,30 @@ export class DbgpConnection extends EventEmitter {
 
   /**
    * Get a variable/property value
+   *
+   * @param name - Variable name (e.g., '$this', '$request')
+   * @param maxDepth - Max recursion depth for nested properties (1-3)
+   * @param maxChildren - Max children to return per property
+   * @param stackDepth - Stack frame depth (0 = current frame)
    */
   async getProperty(
     name: string,
-    depth: number = 1,
-    maxChildren: number = 20
+    maxDepth: number = 1,
+    maxChildren: number = 20,
+    stackDepth: number = 0
   ): Promise<VariableInfo | null> {
     try {
+      // Set max_depth and max_children features before fetching
+      // These affect how much data XDebug returns for nested properties
+      await this.setFeature('max_depth', String(maxDepth));
+      await this.setFeature('max_children', String(maxChildren));
+
+      // property_get -n name -d stack_depth -c context_id
+      // -d: Stack depth (0 = current frame)
+      // -c: Context id (0 = local, 1 = superglobals)
       const response = await this.sendCommand(
         'property_get',
-        `-n ${name} -d ${depth} -c ${maxChildren}`
+        `-n ${name} -d ${stackDepth} -c 0`
       );
 
       if (response.response?.error) {

@@ -863,20 +863,23 @@ export class DbgpConnection extends EventEmitter {
     return info;
   }
 
-  private parseValue(type: string, value: string): unknown {
+  private parseValue(type: string, value: unknown): unknown {
+    // Ensure value is a string for parsing
+    const strValue = typeof value === 'string' ? value : String(value ?? '');
+
     switch (type) {
       case 'int':
-        return parseInt(value, 10);
+        return parseInt(strValue, 10);
       case 'float':
-        return parseFloat(value);
+        return parseFloat(strValue);
       case 'bool':
-        return value === '1' || value.toLowerCase() === 'true';
+        return strValue === '1' || strValue.toLowerCase() === 'true';
       case 'null':
         return null;
       case 'resource':
-        return `[resource: ${value}]`;
+        return `[resource: ${strValue}]`;
       default:
-        return value;
+        return strValue;
     }
   }
 

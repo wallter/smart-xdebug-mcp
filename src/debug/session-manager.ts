@@ -459,7 +459,15 @@ export class DebugSessionManager {
   private async handleBreak(data: BreakEventData): Promise<void> {
     this.stepCount++;
 
+    // Debug: log raw data from XDebug
+    logger.debug('Break event data', {
+      rawFilename: data.filename,
+      lineno: data.lineno,
+      reason: data.reason,
+    });
+
     const localFile = this.pathMapper.toLocal(data.filename);
+    logger.debug('Path mapping result', { rawFilename: data.filename, localFile });
 
     const location: DebugLocation = {
       file: localFile,

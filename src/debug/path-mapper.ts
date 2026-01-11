@@ -122,6 +122,11 @@ export class PathMapper {
    * Translate remote (container) path to local (host) path
    */
   toLocal(remotePath: string): string {
+    // Handle empty path (XDebug sometimes sends empty filename for entry points)
+    if (!remotePath || remotePath.trim() === '') {
+      return '(entry point)';
+    }
+
     let path = this.decodeFileUri(remotePath);
     path = this.normalizePath(path);
 
